@@ -72,6 +72,9 @@ public class WritOutFileService {
 					word.word = words[1];
 					word.phonetics = words[2];
 					word.explain = words[3];
+					word.wordType = "1";
+					word.isnew = 0;
+					word.remembered = 0;
 					wordDaoManager.addWord(connectDB, word);
 				}
 				read.close();

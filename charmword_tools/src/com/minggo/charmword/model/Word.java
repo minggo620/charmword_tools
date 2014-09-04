@@ -13,4 +13,6 @@ public class Word {
 	public String wordType;//单词类型
 	public String example;//例句
 	public String exampleExplain;//例句解释
+	public int isnew;//生词
+	public int remembered;//记住
 }

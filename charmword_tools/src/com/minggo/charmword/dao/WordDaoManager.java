@@ -35,8 +35,8 @@ public class WordDaoManager {
 			pstmt.setString(6, word.wordType);
 			pstmt.setString(7, word.example);
 			pstmt.setString(8, word.exampleExplain);
-			pstmt.setString(9, word.exampleExplain);
-			pstmt.setString(10, word.exampleExplain);
+			pstmt.setInt(9, word.isnew);
+			pstmt.setInt(10, word.remembered);
 
 			int result = pstmt.executeUpdate();
 			if (result != 0) {
