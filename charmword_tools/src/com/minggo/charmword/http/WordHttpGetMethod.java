@@ -9,7 +9,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import com.minggo.charmword.util.StringUtil;
+import com.minggo.charmword.util.KekePhoneticsUtil;
+import com.minggo.charmword.util.YoudaoPhoneticsUtil;
 
 
 public class WordHttpGetMethod {
@@ -33,7 +34,11 @@ public class WordHttpGetMethod {
 			response = httpClient.execute(get);
 			
 			if (response.getStatusLine().getStatusCode()==HttpStatus.SC_OK) {
-				String result = StringUtil.toString(response.getEntity().getContent(),type);
+				if (type==1) {
+					String result = KekePhoneticsUtil.toString(response.getEntity().getContent(),type);
+				}else if (type==2) {
+					String result = YoudaoPhoneticsUtil.toString(response.getEntity().getContent(),type);
+				}
 				//System.out.println(result);
 				//File file = new File("F://test.apk");
 				

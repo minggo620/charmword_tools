@@ -21,7 +21,7 @@ public class WordDaoManager {
 	public boolean addWord(ConnectDB connectDb, Word word) {
 		boolean flag = false;
 		// 先取出角色名对应的角色id
-		String sql = "insert into word values (null,?,?,?,?,?,?,?,?)";
+		String sql = "insert into word values (null,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = null;
 		Connection conn = connectDb.getConnectDB();
 		pstmt = connectDb.preparestmt(conn, sql);
@@ -35,6 +35,8 @@ public class WordDaoManager {
 			pstmt.setString(6, word.wordType);
 			pstmt.setString(7, word.example);
 			pstmt.setString(8, word.exampleExplain);
+			pstmt.setString(9, word.exampleExplain);
+			pstmt.setString(10, word.exampleExplain);
 
 			int result = pstmt.executeUpdate();
 			if (result != 0) {
@@ -50,13 +52,13 @@ public class WordDaoManager {
 		return flag;
 	}
 	/**
-	 * 获取所有的单词
+	 * 获取所有的单词[手动自由改变]
 	 * @return
 	 */
-	public List<Word> getAllWord(ConnectDB connectDb){
+	public List<Word> getAllWordNoPhonetics(ConnectDB connectDb){
 		List<Word> wordList = new ArrayList<Word>();
-		//String sql = "select * from word where phonetics is null or phonetics=' '";
-		String sql = "select * from word where example is null";
+		String sql = "select * from word where phonetics is null or phonetics=' '";
+		//String sql = "select * from word where example is null";
 		PreparedStatement pstmt = null;
 		Connection conn = connectDb.getConnectDB();
 		pstmt = connectDb.preparestmt(conn, sql);
@@ -64,6 +66,43 @@ public class WordDaoManager {
 		try {
 			
 			 rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				Word word = new Word();
+				word.wordId = rs.getInt("wordId");
+				word.word = rs.getString("word");
+				word.phonetics = rs.getString("phonetics");
+				word.explain = rs.getString("explain");
+				word.example = rs.getString("example");
+				word.exampleExplain = rs.getString("exampleExplain");
+				word.wordType = rs.getString("wordType");
+				wordList.add(word);
+			}
+		}catch (SQLException e1) {
+			e1.printStackTrace();
+		}finally{
+			connectDb.closeResultSet(rs);
+			connectDb.closePreparedStatement(pstmt);
+			connectDb.closeConnection(conn);
+		}
+		return wordList;
+	}
+	
+	/**
+	 * 获取所有的单词
+	 * @return
+	 */
+	public List<Word> getAllWord(ConnectDB connectDb){
+		List<Word> wordList = new ArrayList<Word>();
+		String sql = "select * from word";
+		//String sql = "select * from word where example is null";
+		PreparedStatement pstmt = null;
+		Connection conn = connectDb.getConnectDB();
+		pstmt = connectDb.preparestmt(conn, sql);
+		ResultSet rs = null;
+		try {
+			
+			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				Word word = new Word();

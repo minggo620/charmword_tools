@@ -16,7 +16,7 @@ import com.minggo.charmword.util.ConnectDB;
  * @author minggo
  * @time 2014-8-23 S下午4:04:45
  */
-public class HtmlFileParseService {
+public class YoudaoPhoneticsService {
 
 	private ConnectDB connectDB = new ConnectDB();
 	private WordDaoManager wordDaoManager = new WordDaoManager();
@@ -48,31 +48,19 @@ public class HtmlFileParseService {
 				if (wordList != null && !wordList.isEmpty()) {
 					//subList(start, end)
 					
-					for (final Word word : wordList.subList(start, 1)) {
+					for (final Word word : wordList.subList(start, end)) {
 						//word = wordList.get(1);
-						//String url = "http://dict.kekenet.com/en/" + word.word;//可可网
-						//String url = "http://dict.youdao.com/search?le=eng&q="+word.word;//有道翻译
-						String url = "http://www.iciba.com/"+word.word;//金山翻译
+						String url = "http://dict.youdao.com/search?le=eng&q="+word.word;//有道翻译
 						System.out.println(url);
 						httpGet = new HttpGet(url);
 						getMethod = new WordHttpGetMethod(httpGet, new HttpListener() {
 							@Override
 							public void onResult(String result) {
-								/*if (result!=null&&!word.equals("")) {
-									System.out.println(word.word+"--->"+result);
-									word.phonetics = result;
-									wordDaoManager.updatePhonetics(connectDB, word);
-								}*/
 								if (result!=null&&!word.equals("")) {
 									System.out.println(word.word+"--->"+result);
-									//word.example = result;
-									//wordDaoManager.updateExampleEN(connectDB, word);
-								}
-								/*if (result!=null&&!word.equals("")) {
-									System.out.println(word.word+"--->"+result);
 									word.phonetics = result;
 									wordDaoManager.updatePhonetics(connectDB, word);
-								}*/
+								}
 							}
 
 							@Override
@@ -80,7 +68,7 @@ public class HtmlFileParseService {
 								
 							}
 						});
-						getMethod.requestData(1);
+						getMethod.requestData(2);
 					}
 				}
 			}
@@ -92,14 +80,14 @@ public class HtmlFileParseService {
 	 * 获取数据库的单词
 	 */
 	private void getWordList() {
-		wordList = wordDaoManager.getAllWord(connectDB);
+		wordList = wordDaoManager.getAllWordNoPhonetics(connectDB);
 	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new HtmlFileParseService().parseHtml();
+		new YoudaoPhoneticsService().parseHtml();
 	}
 
 }
