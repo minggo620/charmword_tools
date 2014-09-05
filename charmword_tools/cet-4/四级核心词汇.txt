@@ -133,7 +133,6 @@
 133.altogether ad.完全；总而言之
 134.aluminium n.铝
 135.always ad.总是，一直；永远
-136.a.m (缩)上午，午前
 137.amaze vt.使惊奇，使惊愕
 138.ambition n.雄心，抱负，野心
 139.ambulance n.救护车；野战医院
@@ -2661,7 +2660,7 @@
 2661.off ad.(离)开；(停)止
 2662.offend vt.冒犯 vi.犯过错
 2663.offer vt.提供；提出 n.提供
-2664.offic en.办公室；处，局，社
+2664.office en.办公室；处，局，社
 2665.officer  n.官员；干事；军官
 2666.official a.官员的；官方的
 2667.often ad.经常，常常
@@ -2818,7 +2817,6 @@
 2818.plunge vt.使投入；使陷入
 2819.plural a.复数的 n.复数
 2820.plus  prep.加，加上 a.正的
-2821.P.M.  n.下午，午后
 2822.pocket n.衣袋 n.袖珍的
 2823.poem  n.诗，韵文，诗体文
 2824.poet  n.诗人
@@ -2834,7 +2832,7 @@
 2834.polish vt.磨光；使优美
 2835.polite a.有礼貌的；有教养的
 2836.political a.政治的，政治上的
-2837.politicia n  n.政治家；政客
+2837.politician n  n.政治家；政客
 2838.politics n.政治，政治学；政纲
 2839.pollute  vt.弄脏，污染，沾污
 2840.pollution n.污染
@@ -2900,7 +2898,7 @@
 2900.premier  n.总理，首相
 2901.preparation n.准备，预备；制备
 2902.prepare  vt.&vi.准备，预备
-2903.prepositio n n.前置词，介词
+2903.preposition n n.前置词，介词
 2904.prescribe vt.命令；处(方)
 2905.presence n.出席，到场；在
 2906.present  a.现在的 n.目前
@@ -3116,7 +3114,7 @@
 3116.recorder n.记录者；录音机
 3117.recover  vt.重新获得；挽回
 3118.recovery n.重获；痊愈，恢复
-3119.reda.红色的 n.红色
+3119.red n.红色
 3120.reduce vt.减少，减小；简化
 3121.reduction n.减少，减小，缩减
 3122.reed  n.芦苇，芦杆，芦丛
@@ -3470,7 +3468,7 @@
 3470.sharpen  vt.削尖，使敏锐
 3471.sharply  ad.锐利地，敏锐地
 3472.shave vt.剃，刮 vi.修面
-3473.shepro n.(主格)她
+3473.she pron.(主格)她
 3474.shear vt.剪；剥夺 vi.剪
 3475.shed  vt.流出；散发；脱落
 3476.shed  n.棚，小屋；贷棚
@@ -3899,7 +3897,7 @@
 3899.sympathy n.同情；一致，同感
 3900.synthetic a.综合的；合成的
 3901.system n.系统，体系；制度
-3902.systematic(al) a.有系统的；有计划的 
+3902.systematical a.有系统的；有计划的 
 3903.table n.桌子；餐桌；项目表
 3904.tablet n.碑，匾；药片
 3905.tag n.附加语；标签
@@ -4074,7 +4072,7 @@
 4074.tough a.坚韧的；健壮的
 4075.tour  n.&vi.旅行，游历
 4076.tourist  n.旅游者，观光者
-4077.toward(s) prep.向；对于；接近
+4077.towards prep.向；对于；接近
 4078.towel n.毛巾，手巾
 4079.tower n.塔 vi.屹立，高耸
 4080.town  n.镇，市镇，城镇
