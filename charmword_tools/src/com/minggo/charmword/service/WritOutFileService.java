@@ -33,7 +33,7 @@ public class WritOutFileService {
 		
 		if (wordList!=null&&!wordList.isEmpty()) {
 			try {
-				FileOutputStream outputStream = new FileOutputStream(new File("四级高频词汇-整理.txt"));
+				FileOutputStream outputStream = new FileOutputStream(new File("cet-4/四级核心词汇-整理.txt"));
 				System.out.println("正在写入...");
 				for (Word word : wordList) {
 					String str = word.wordId+"§"+word.word+"§"+word.phonetics+"§"+word.explain+"\n";
@@ -55,15 +55,16 @@ public class WritOutFileService {
 	 * 把整理的单词写到数据
 	 */
 	private void insertAllWord2Databse(){
-		File file = new File("四级高频词汇-整理.txt");
+		File file = new File("cet-4/四级高频词汇-整理.txt");
 		if (file.exists() && file.isFile()) {
 
 			try {
-				//FileOutputStream outputStream = new FileOutputStream("四级高频词汇-result.txt");
+				FileOutputStream outputStream = new FileOutputStream("cet-4/四级核心词汇-result.txt");
 				InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");// 考虑到编码格式
 				BufferedReader bufferedReader = new BufferedReader(read);
 				String lineTxt = null;
 				System.out.println("正在导入数据库...");
+				int i = 1;
 				while ((lineTxt = bufferedReader.readLine()) != null) {
 					String words[] = lineTxt.split("§");
 					
@@ -75,9 +76,13 @@ public class WritOutFileService {
 					word.wordType = "1";
 					word.isnew = 0;
 					word.remembered = 0;
+					
+					//outputStream.write((i+++"§"+word.word+"§"+word.phonetics+"§"+word.explain+"\n").getBytes("UTF-8"));
 					wordDaoManager.addWord(connectDB, word);
+					
 				}
 				read.close();
+				//outputStream.close();
 
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();

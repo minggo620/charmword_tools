@@ -35,9 +35,9 @@ public class WordHttpGetMethod {
 			
 			if (response.getStatusLine().getStatusCode()==HttpStatus.SC_OK) {
 				if (type==1) {
-					String result = KekePhoneticsUtil.toString(response.getEntity().getContent(),type);
+					result = KekePhoneticsUtil.toString(response.getEntity().getContent(),type);
 				}else if (type==2) {
-					String result = YoudaoPhoneticsUtil.toString(response.getEntity().getContent(),type);
+					result = YoudaoPhoneticsUtil.toString(response.getEntity().getContent(),type);
 				}
 				//System.out.println(result);
 				//File file = new File("F://test.apk");
@@ -52,10 +52,13 @@ public class WordHttpGetMethod {
 			}
 		}catch (IllegalStateException e) {
 			listener.onError(e.toString());
+			return;
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
+			return;
 		} catch (IOException e) {
 			e.printStackTrace();
+			return;
 		}
 	}
 }

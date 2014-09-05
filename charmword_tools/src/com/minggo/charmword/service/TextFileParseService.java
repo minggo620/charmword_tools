@@ -31,39 +31,44 @@ public class TextFileParseService {
 	 */
 	private boolean parseText() {
 
-		File file = new File("四级高频词汇.txt");
+		File file = new File("cet-4/四级核心词汇.txt");
 		if (file.exists() && file.isFile()) {
 
 			try {
-				FileOutputStream outputStream = new FileOutputStream("四级高频词汇-result.txt");
-				InputStreamReader read = new InputStreamReader(new FileInputStream(file),"GBK");// 考虑到编码格式
+				FileOutputStream outputStream = new FileOutputStream("cet-4/四级核心词汇-result.txt");
+				InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");// 考虑到编码格式
 				BufferedReader bufferedReader = new BufferedReader(read);
 				String lineTxt = null;
 				System.out.println("正在导入数据库...");
+				int i = 1;
 				while ((lineTxt = bufferedReader.readLine()) != null) {
+					//整理后的写入库
 					Word word = new Word();
 					word.wordId = Integer.valueOf(lineTxt.substring(0, lineTxt.indexOf(".")));
 					word.word = lineTxt.substring(lineTxt.indexOf(".")+1, lineTxt.indexOf(" "));
 					word.explain = lineTxt.substring(lineTxt.indexOf(" ")+1);
+					word.wordType = "2";
+					word.isnew = 0;
+					word.remembered = 0;
 					wordDaoManager.addWord(connectDB, word);
 					
 					//--------------------------------------------------------
-					/*System.out.println(lineTxt.substring(0, lineTxt.indexOf(".")));
-					System.out.println(lineTxt.substring(lineTxt.indexOf(".")+1, lineTxt.indexOf(" ")));
+					//System.out.println(lineTxt.substring(0, lineTxt.indexOf(".")));
+					//System.out.println(lineTxt.substring(lineTxt.indexOf(".")+1, lineTxt.indexOf(" ")));
 					
-					String explain = lineTxt.substring(lineTxt.indexOf(" ")+1);
+					//String explain = lineTxt.substring(lineTxt.indexOf(" ")+1);
 					//System.out.println(explain);
-					System.out.println(explain.subSequence(0, explain.lastIndexOf(".")));*/
-					/*if (explain.contains(".")) {
+					/*System.out.println(explain.subSequence(0, explain.lastIndexOf(".")));
+					if (explain.contains(".")) {
 						System.out.println(explain.subSequence(0, explain.lastIndexOf(".")));
 					}*/
 					
 					//System.out.println(lineTxt);
-					//outputStream.write((lineTxt+"\n").getBytes("UTF-8"));
+					//outputStream.write((i+++"."+word.word+" "+word.explain+"\n").getBytes("UTF-8"));
 					//----------------------------------------------------------------
 				}
 				read.close();
-				outputStream.close();
+				//outputStream.close();
 
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();

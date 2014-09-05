@@ -21,7 +21,7 @@ public class WordDaoManager {
 	public boolean addWord(ConnectDB connectDb, Word word) {
 		boolean flag = false;
 		// 先取出角色名对应的角色id
-		String sql = "insert into word values (null,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into word_cet4_high values (null,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = null;
 		Connection conn = connectDb.getConnectDB();
 		pstmt = connectDb.preparestmt(conn, sql);
@@ -57,7 +57,7 @@ public class WordDaoManager {
 	 */
 	public List<Word> getAllWordNoPhonetics(ConnectDB connectDb){
 		List<Word> wordList = new ArrayList<Word>();
-		String sql = "select * from word where phonetics is null or phonetics=' '";
+		String sql = "select * from word_cet4_core where phonetics is null or phonetics=' '";
 		//String sql = "select * from word where example is null";
 		PreparedStatement pstmt = null;
 		Connection conn = connectDb.getConnectDB();
@@ -94,7 +94,7 @@ public class WordDaoManager {
 	 */
 	public List<Word> getAllWord(ConnectDB connectDb){
 		List<Word> wordList = new ArrayList<Word>();
-		String sql = "select * from word";
+		String sql = "select * from word_cet4_core";
 		//String sql = "select * from word where example is null";
 		PreparedStatement pstmt = null;
 		Connection conn = connectDb.getConnectDB();
@@ -134,7 +134,7 @@ public class WordDaoManager {
 	 */
 	public boolean updatePhonetics(ConnectDB connectDb,Word word) {
 		boolean flag = false;
-		String sql = "update word set phonetics=? where wordID=?";
+		String sql = "update word_cet4_core set phonetics=? where wordID=?";
 		PreparedStatement pstmt = null;
 		Connection conn = connectDb.getConnectDB();
 		pstmt = connectDb.preparestmt(conn, sql);

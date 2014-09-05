@@ -32,9 +32,10 @@ public class YoudaoPhoneticsService {
 	 */
 	private boolean parseHtml() {
 		getWordList();
-		/*openThread(0,200);
-		openThread(200,400);
-		openThread(400,600);*/
+		/*openThread(0,1000);
+		openThread(1000,2000);
+		openThread(2000,3000);
+		openThread(3000,wordList.size());*/
 		openThread(0,wordList.size());
 		
 		return true;
