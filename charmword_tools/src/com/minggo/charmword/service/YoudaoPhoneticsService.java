@@ -51,7 +51,7 @@ public class YoudaoPhoneticsService {
 					
 					for (final Word word : wordList.subList(start, end)) {
 						//word = wordList.get(1);
-						String url = "http://dict.youdao.com/search?le=eng&q="+word.word;//有道翻译
+						String url = "http://dict.youdao.com/search?le=eng&q="+word.word+"&keyfrom=hao360";//有道翻译
 						System.out.println(url);
 						httpGet = new HttpGet(url);
 						getMethod = new WordHttpGetMethod(httpGet, new HttpListener() {
