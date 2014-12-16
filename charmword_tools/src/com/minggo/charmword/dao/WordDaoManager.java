@@ -87,6 +87,79 @@ public class WordDaoManager {
 		}
 		return wordList;
 	}
+	/**
+	 * 获取所有的单词[手动自由改变]
+	 * @return
+	 */
+	public List<Word> getAllWordHighNoExample(ConnectDB connectDb){
+		List<Word> wordList = new ArrayList<Word>();
+		String sql = "select * from word_cet4_high where example is null or example=' '";
+		//String sql = "select * from word where example is null";
+		PreparedStatement pstmt = null;
+		Connection conn = connectDb.getConnectDB();
+		pstmt = connectDb.preparestmt(conn, sql);
+		ResultSet rs = null;
+		try {
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				Word word = new Word();
+				word.wordId = rs.getInt("wordId");
+				word.word = rs.getString("word");
+				word.phonetics = rs.getString("phonetics");
+				word.explain = rs.getString("explain");
+				word.example = rs.getString("example");
+				word.exampleExplain = rs.getString("exampleExplain");
+				word.wordType = rs.getString("wordType");
+				wordList.add(word);
+			}
+		}catch (SQLException e1) {
+			e1.printStackTrace();
+		}finally{
+			connectDb.closeResultSet(rs);
+			connectDb.closePreparedStatement(pstmt);
+			connectDb.closeConnection(conn);
+		}
+		return wordList;
+	}
+	/**
+	 * 获取所有的单词[手动自由改变]
+	 * @return
+	 */
+	public List<Word> getAllWordCoreNoExample(ConnectDB connectDb){
+		
+		List<Word> wordList = new ArrayList<Word>();
+		String sql = "select * from word_cet4_core where example is null or example=' '";
+		//String sql = "select * from word where example is null";
+		PreparedStatement pstmt = null;
+		Connection conn = connectDb.getConnectDB();
+		pstmt = connectDb.preparestmt(conn, sql);
+		ResultSet rs = null;
+		try {
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				Word word = new Word();
+				word.wordId = rs.getInt("wordId");
+				word.word = rs.getString("word");
+				word.phonetics = rs.getString("phonetics");
+				word.explain = rs.getString("explain");
+				word.example = rs.getString("example");
+				word.exampleExplain = rs.getString("exampleExplain");
+				word.wordType = rs.getString("wordType");
+				wordList.add(word);
+			}
+		}catch (SQLException e1) {
+			e1.printStackTrace();
+		}finally{
+			connectDb.closeResultSet(rs);
+			connectDb.closePreparedStatement(pstmt);
+			connectDb.closeConnection(conn);
+		}
+		return wordList;
+	}
 	
 	/**
 	 * 获取所有的单词
@@ -141,6 +214,64 @@ public class WordDaoManager {
 		try {
 			pstmt.setString(1, word.phonetics);
 			pstmt.setInt(2, word.wordId);
+			int result = pstmt.executeUpdate();
+			if(result != 0) {
+				flag = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			connectDb.closePreparedStatement(pstmt);
+			connectDb.closeConnection(conn);
+		}
+		return flag;
+	}
+	/**
+	 * 更新单词音标
+	 * @param connectDb
+	 * @param id
+	 * @param password
+	 * @return
+	 */
+	public boolean updateHighExample(ConnectDB connectDb,Word word) {
+		boolean flag = false;
+		String sql = "update word_cet4_high set example=?,exampleExplain=? where wordID=?";
+		PreparedStatement pstmt = null;
+		Connection conn = connectDb.getConnectDB();
+		pstmt = connectDb.preparestmt(conn, sql);
+		try {
+			pstmt.setString(1, word.example);
+			pstmt.setString(2, word.exampleExplain);
+			pstmt.setInt(3, word.wordId);
+			int result = pstmt.executeUpdate();
+			if(result != 0) {
+				flag = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			connectDb.closePreparedStatement(pstmt);
+			connectDb.closeConnection(conn);
+		}
+		return flag;
+	}
+	/**
+	 * 更新单词音标
+	 * @param connectDb
+	 * @param id
+	 * @param password
+	 * @return
+	 */
+	public boolean updateCoreExample(ConnectDB connectDb,Word word) {
+		boolean flag = false;
+		String sql = "update word_cet4_core set example=?,exampleExplain=? where wordID=?";
+		PreparedStatement pstmt = null;
+		Connection conn = connectDb.getConnectDB();
+		pstmt = connectDb.preparestmt(conn, sql);
+		try {
+			pstmt.setString(1, word.example);
+			pstmt.setString(2, word.exampleExplain);
+			pstmt.setInt(3, word.wordId);
 			int result = pstmt.executeUpdate();
 			if(result != 0) {
 				flag = true;
