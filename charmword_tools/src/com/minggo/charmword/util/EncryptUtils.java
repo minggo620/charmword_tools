@@ -225,8 +225,8 @@ public class EncryptUtils {
 		
 		try {
 			// debug =false ;
-			String oldFile = new String("C:\\aaa\\aa.txt");
-			String newFile = new String("C:\\aaa\\aa_en.txt");
+			String oldFile = new String("F://charmword.db");
+			String newFile = new String("F://test/charmword.db");
 			encryptFile(oldFile, newFile);
 			System.out.println("ok");
 		} catch (Exception e) {
