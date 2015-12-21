@@ -9,7 +9,8 @@ charmword_tools
 
 ###其中有道单词解析信息获取
 
-`public class YouDaoExampleService {
+`
+public class YouDaoExampleService {
 	
 	private List<Word> wordList;
 	private ConnectDB connectDB = new ConnectDB();
@@ -82,4 +83,6 @@ charmword_tools
 	public static void main(String[] args) {
 		new YouDaoExampleService().parseHtml();
 	}
-}`
+}
+
+`
