@@ -1,6 +1,9 @@
 charmword_tools
 ===============
 
+[![Support](https://img.shields.io/badge/IDE-Eclipse-blue.svg?style=flat)]()
+[![Support](https://img.shields.io/badge/Lanuge-Java-blue.svg?style=flat)]()
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
 ###获取单词信息爬虫
 
 这个爬虫是用Java写的，主要为了实现自己应用[《单词棒》](http://zhushou.360.cn/detail/index/soft_id/2735395?recrefer=SE_D_%E5%8D%95%E8%AF%8D%E6%A3%92#prev)提供数据  
