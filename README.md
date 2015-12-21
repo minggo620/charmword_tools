@@ -82,5 +82,4 @@ charmword_tools
 	public static void main(String[] args) {
 		new YouDaoExampleService().parseHtml();
 	}
-
 }`
